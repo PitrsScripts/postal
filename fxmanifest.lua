@@ -10,3 +10,9 @@ shared_scripts {
 client_scripts { 
     "postal.lua",  
 }
+
+dependencies {
+    'oxmysql',   
+    'ox_lib', 
+    'es_extended',  
+}
