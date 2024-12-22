@@ -6,16 +6,13 @@ RegisterCommand("postal", function(source, args, raw)
 		notify(Config.Prefix.. "Nemáš žádný zadaný postal!")
 	end
 end, false)
-
 function notify(msg)
-	-- Zde voláme funkci ox_lib pro zobrazení notifikace
 	exports.ox_lib:notify({
 		title = Config.Prefix,
 		description = msg,
-		type = "info" -- nebo jiný typ, pokud je potřeba
+		type = "info"
 	})
 end
-
 function setWaypoint(postalCode)
 	local postalCode_coords = vector2(0,0)
 	for i = 1, #Config.postalcodes, 1 do
@@ -31,9 +28,8 @@ function setWaypoint(postalCode)
 		notify(Config.Prefix.. "Tento Postal neexistuje")
 	end
 end
-
-Citizen.CreateThread(function()	
-	TriggerEvent('chat:addSuggestion', '/postcode', 'set marker at target position', {
-	    { name="postal code", help="postal code of target (e.g. 001)" }
-	})
+Citizen.CreateThread(function()
+    TriggerEvent('chat:addSuggestion', '/postcode', 'nastav si postal code', {
+        { name="postal code", help="postal code (např. 001)" }
+    })
 end)
