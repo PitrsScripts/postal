@@ -8,7 +8,7 @@ shared_scripts {
 }
 
 client_scripts { 
-    "postal.lua",  
+    'postal.lua',  
 }
 
 dependencies {
