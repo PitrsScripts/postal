@@ -3,7 +3,7 @@ RegisterCommand("postal", function(source, args, raw)
 		local postalCode = args[1]
 		setWaypoint(postalCode)
 	else
-		notify(Config.Prefix.. "Nemáš žádný zadaný postal!")
+		notify(Config.Prefix.. "You don't have a posting!")
 	end
 end, false)
 function notify(msg)
@@ -23,13 +23,13 @@ function setWaypoint(postalCode)
 	
 	if postalCode_coords.x ~= 0.0 and postalCode_coords.y ~= 0.0 then
 		SetNewWaypoint(postalCode_coords.x, postalCode_coords.y)
-		notify(Config.Prefix.. "Úspěšně jsis nastavil postal " .. postalCode)
+		notify(Config.Prefix.. "You have successfully set postal" .. postalCode)
 	else
-		notify(Config.Prefix.. "Tento Postal neexistuje")
+		notify(Config.Prefix.. "This Postal does not exist")
 	end
 end
 Citizen.CreateThread(function()
-    TriggerEvent('chat:addSuggestion', '/postcode', 'nastav si postal code', {
-        { name="postal code", help="postal code (např. 001)" }
+    TriggerEvent('chat:addSuggestion', '/postcode', 'Set your postal code', {
+        { name="postal code", help="postal code (e.g. 001)" }
     })
 end)
